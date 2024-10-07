@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private float timeLimit;
+
     private float timeCount;
 
     private int humansCount;
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
         if (GameManager.GameState.Play == GameManager.gameManager.GetGameState())
         {
             timeCount += Time.deltaTime;
+            timeLimit  -= Time.deltaTime;
         }
 
         humansCount = GameObject.FindGameObjectsWithTag("Human").Length;
@@ -56,9 +60,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (currentGameState == GameState.Clear)
+        if(timeLimit <= 0)
         {
-            Time.timeScale = 0;
+            currentGameState = GameState.GameOver;
         }
     }
 
@@ -75,5 +79,10 @@ public class GameManager : MonoBehaviour
     public float GetTime()
     {
         return timeCount;
+    }
+
+    public float GetTimeLimit()
+    {
+        return timeLimit;
     }
 }

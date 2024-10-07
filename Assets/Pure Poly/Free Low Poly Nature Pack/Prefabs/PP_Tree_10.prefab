@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 6075155838382831309}
   - component: {fileID: 7196912292531665256}
   - component: {fileID: 4901155340339187106}
-  - component: {fileID: 6846767348704259192}
+  - component: {fileID: 5211461551043828471}
   m_Layer: 0
   m_Name: PP_Tree_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &6075155838382831309
 Transform:
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6846767348704259192
-MeshCollider:
+--- !u!65 &5211461551043828471
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5006698605598939749, guid: a3ccb41ae53c6bf4bb0a5bfc470bf069, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.6567368, y: 6.1635313, z: 0.7206103}
+  m_Center: {x: 0.032926902, y: 3.0817657, z: -0.025564551}
