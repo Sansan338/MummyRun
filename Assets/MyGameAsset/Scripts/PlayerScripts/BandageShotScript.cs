@@ -17,18 +17,21 @@ public class BandageShotScript : MonoBehaviour
 
     void Update()
     {
-        this.transform.position = new Vector3(shotPositionTarget.transform.position.x, 
-             + shotPositionTarget.transform.position.y, shotPositionTarget.transform.position.z);
-
-        if (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && playerPossessionScript.GetPossession() > 0
-            && GameManager.GameState.Play == GameManager.gameManager.GetGameState())
+        if (GameManager.gameManager.GetGameState() == GameManager.GameState.Play)
         {
-            var bandageObject = Instantiate(bandage, this.transform.position ,Quaternion.identity);
-            bandageObject.GetComponent<BandageBulletMoveScript>().Init(transform.forward);
-            playerPossessionScript.SetPossession(1);
-            Destroy(bandageObject,destroyTime);
+            this.transform.position = new Vector3(shotPositionTarget.transform.position.x,
+                 +shotPositionTarget.transform.position.y, shotPositionTarget.transform.position.z);
 
-            shotCount++;
+            if (Input.GetMouseButtonDown(0) && playerPossessionScript.GetPossession() > 0
+                && GameManager.GameState.Play == GameManager.gameManager.GetGameState())
+            {
+                var bandageObject = Instantiate(bandage, this.transform.position, Quaternion.identity);
+                bandageObject.GetComponent<BandageBulletMoveScript>().Init(transform.forward);
+                playerPossessionScript.SetPossession(1);
+                Destroy(bandageObject, destroyTime);
+
+                shotCount++;
+            }
         }
     }
 

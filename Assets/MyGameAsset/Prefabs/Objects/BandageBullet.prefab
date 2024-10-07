@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 558187607753491645}
   - component: {fileID: 1688749879001464699}
   - component: {fileID: 3726975081796014897}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1353694371289658920}
   - component: {fileID: 1412359353507061099}
   - component: {fileID: 45599212862029108}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3743979467333564925}
   - component: {fileID: 1688774655596208795}
   - component: {fileID: 5728853421070016060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BandageBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -287,4 +287,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bandageRigidbody: {fileID: 1688774655596208795}
-  shotPower: 5
+  shotPower: 4

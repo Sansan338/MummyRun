@@ -10,9 +10,20 @@ public class ResultScoreScript : MonoBehaviour
     [SerializeField]
     private Text totalScoreText;
 
+    [SerializeField]
+    private int catchMagnification;
+    [SerializeField]
+    private int possessionMagnification;
+    [SerializeField]
+    private float timeMagnification;
+
     private float totalScore;
 
     private int possessionScore;
+
+    private int catchScore;
+
+    private float timeScore;
 
     void Start()
     {
@@ -22,7 +33,9 @@ public class ResultScoreScript : MonoBehaviour
     void Update()
     {
         possessionScore = playerPossessionScript.GetPossession();
-        totalScore = possessionScore * 100;
+        timeScore = GameManager.gameManager.GetTimeLimit();
+        catchScore = GameObject.FindGameObjectsWithTag("MummyAI").Length;
+        totalScore = Mathf.Floor((catchScore * catchMagnification) + (possessionScore * possessionMagnification) * (1 + timeScore * timeMagnification));
         totalScoreText.text = totalScore.ToString();
     }
 }

@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject bandageExplanationUI;
     [SerializeField]
-    private GameObject jumpPowerUI;
+    private GameObject timeLimitUI;
     [SerializeField]
     private GameObject possessionUI;
     [SerializeField]
@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     {
         deleteTextFlag = false;
         bandageExplanationUI.SetActive(false);
-        jumpPowerUI.SetActive(false);
+        timeLimitUI.SetActive(false);
         possessionUI.SetActive(false);
         humansCountUI.SetActive(false);
         resultScoreUI.SetActive(false);
@@ -52,15 +52,17 @@ public class UIManager : MonoBehaviour
         if(GameManager.GameState.Play == GameManager.gameManager.GetGameState())
         {
             Destroy(bandageExplanationUI);
+            timeLimitUI.SetActive(true);
             humansCountUI.SetActive(true);
+            crosshair.SetActive(true);
         }
 
         if(GameManager.GameState.GameOver == GameManager.gameManager.GetGameState() || GameManager.GameState.Clear == GameManager.gameManager.GetGameState())
         {
             resultScoreUI.SetActive(true);
-            jumpPowerUI.SetActive(false);
             possessionUI.SetActive(false);
             humansCountUI.SetActive(false);
+            crosshair.SetActive(false);
             if (bandageExplanationUI != null)
             {
                 bandageExplanationUI.SetActive(false);
@@ -83,31 +85,6 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
-
-        //ジャンプパワーチャージ
-        if(Input.GetKey(KeyCode.Space))
-        {
-            jumpPowerUI.SetActive(true);
-        }
-        else if(Input.GetKeyUp(KeyCode.Space))
-        {
-            Invoke(nameof(HiddenJumpPowerUI), 0.1f);
-        }
-
-        //クロスヘア
-        if(Input.GetMouseButton(1) && GameManager.GameState.Play == GameManager.gameManager.GetGameState())
-        {
-            crosshair.SetActive(true);
-        }
-        if(!Input.GetMouseButton(1))
-        {
-            crosshair.SetActive(false);
-        }
-    }
-
-    private void HiddenJumpPowerUI()
-    {
-        jumpPowerUI.SetActive(false);
     }
 
     private void OnMouseDown()

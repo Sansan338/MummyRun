@@ -29,7 +29,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     private float moveSpeed;
 
-    private bool isGround;
+    private int jumpCount;
 
     private Vector3 moveFoward;
 
@@ -77,24 +77,10 @@ public class PlayerMoveScript : MonoBehaviour
         }
 
         //ジャンプ
-        if (isGround == true)
+        if (jumpCount < 2 && Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                time += Time.deltaTime;
-                if (time < maxCharge)
-                {
-                    currentJumpPower += (time * chargeMultiplier * Time.deltaTime);
-                }
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                isGround = false;
-                playerRigidbody.AddForce(Vector3.up * currentJumpPower, ForceMode.Impulse);
-                currentJumpPower = minJumpPower;
-                time = 0;
-            }
+            jumpCount++;
+            playerRigidbody.AddForce(Vector3.up * currentJumpPower, ForceMode.Impulse);
         }
 
         //移動スピードに合わせてアニメーションを変化
@@ -105,7 +91,7 @@ public class PlayerMoveScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            isGround = true;
+            jumpCount = 0;
         }
 
         //ステージ外に行くと死亡
@@ -124,7 +110,7 @@ public class PlayerMoveScript : MonoBehaviour
         }
         if (collider.gameObject.tag == "Ground" || collider.gameObject.tag == "MoveObject")
         {
-            isGround = true;
+            jumpCount = 0;
         }
     }
 
